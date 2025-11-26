@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: antobook-ui
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: antobook-ui
+  template:
+    metadata:
+      labels:
+        app: antobook-ui
+    spec:
+      containers:
+        - image: gcr.io/google-samples/gb-frontend:v5
+          name: antobook-ui
+          ports:
+            - containerPort: 80
